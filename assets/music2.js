@@ -2030,94 +2030,31 @@ const music = [
   }
 ];
 
-const init = () => {
+const formatDate = (date) => {
+    return new Date(date).toISOString().slice(0,10);
+}
 
-  const songList = document.querySelector(".song-list");
-  // const filterInput = document.querySelector("#input").value.toLowerCase();
+const renderTracks = (tracks) => {
+    document.querySelector("main").innerHTML = "";
+    tracks.forEach((track, i) => {
+        const trackElement = document.createElement("div");
+        // trackElement.classList.add("song-list");
 
+        trackElement.innerHTML =
+        
+         <div class="song-list">
+                {/* <img src="track.artworkUrl100"></img> */}
+             <p class="title">"${track.trackName}"</p>
+             <p class="artist">${track.artistName}</p>
+             <p class="releaseDate">${formatDate(track.releaseDate)}</p>
+             <p class="price">${track.trackPrice} ${track.currency}</p>
+         </div>
 
+         document.querySelector("main").appendChild(trackElement);
+    })
+}
 
-
-  music.forEach(song => {
-  // ============================================== LIST
-
-  const tracks = document.createElement("li");
-  tracks.classList.add("li");
-  songList.appendChild(tracks);
-  // ============================================== ID
-
-  const id = document.createElement("p");
-  id.textContent = music.indexOf(song) + 1;
-  id.classList.add("id");
-  tracks.appendChild(id);
-
-  // ============================================== IMg
-  const img = document.createElement("img");
-  img.src = song.artworkUrl30;
-  img.classList.add("img");
-  tracks.appendChild(img);
-
-  // ============================================== Track Name
-
-  const name = document.createElement("p");
-  name.textContent = song.trackName;
-  name.classList.add("name");
-  tracks.appendChild(name);
-  // ============================================== Artist Name
-
-  const artistName = document.createElement("p");
-  artistName.textContent = song.artistName;
-  artistName.classList.add("artist");
-  tracks.appendChild(artistName);
-
-  // ============================================== Album Name
-
-  const albumName = document.createElement("p");
-  albumName.textContent = song.collectionName;
-  albumName.classList.add("album");
-  tracks.appendChild(albumName);
-
-  // ============================================== Length of song
-  const time = document.createElement("p");
-  const timeVal = song.trackTimeMillis;
-  time.textContent = millisToMinAndSec(timeVal);
-  time.classList.add("time");
-  tracks.appendChild(time);
-
-  function millisToMinAndSec(time) {
-    let min = Math.floor(time / 60000);
-    let sec = ((time % 60000) / 1000).toFixed(0);
-    return `${min} : ${sec}`;
-  }
-});
-
-const searchBar = document.querySelector("#input");
-searchBar.addEventListener("keyup", function(e){
-  const term = e.target.value.toLowerCase();
-  const songItem =  document.querySelector(".li"); 
-   
-  music.forEach(function(song){
-    const artist = song.artistName.textContent; 
-    const collection = song.collectionName.textContent;
-
-   
-    if (
-     artist.indexOf(term) != -1 &&
-      collection.indexOf(term) != -1
-    ) {
-      songItem.style.display = "";
-    } else {
-      songItem.style.display = "none";
-    }
-  })
-
-})
+renderTracks(music)
 
 
 
-
-};
-
-
-
-init()

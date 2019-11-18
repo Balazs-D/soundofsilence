@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.song-list > li {
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+  background: pink;
+  height: 8vh;
+  border-bottom: 1px solid black;
+  padding-top: 1%;
+}
+
+p {
+  text-align: start;
+}
+
+.id {
+  position: absolute;
+  left: 0.5%;
+}
+
+.name {
+  position: absolute;
+  left: 4.5%;
+}
+
+.img {
+  position: absolute;
+  left: 2%;
+}
+
+.artist {
+  position: absolute;
+  left: 30%;
+}
+
+.album {
+  position: absolute;
+  left: 52%;
+}
+
+.time {
+  position: absolute;
+  left: 87%;
+}
+
+.pop {
+  position: absolute;
+  left: 70%;
+}
+
+.price {
+  position: absolute;
+  left: 85%;
+}
+
+/*# sourceMappingURL=style.css.map */
