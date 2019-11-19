@@ -2034,11 +2034,25 @@ const init = () => {
 
   const songList = document.querySelector(".song-list");
   // const filterInput = document.querySelector("#input").value.toLowerCase();
+  const filterInput = document.querySelector("#filter-input").value.toLowerCase();
 
 
+  const myCollection = music
+    // Filter the collection
+    .filter(
+      ({
+        trackName: track,
+        artistName: artist,
+        collectionCensoredName: album
+      }) =>
+        filterInput == '' ||
+        filterInput == 'undefined' ||
+        track.toLowerCase().includes(filterInput) ||
+        artist.toLowerCase().includes(filterInput) ||
+        album.toLowerCase().includes(filterInput)
+    );
 
-
-  music.forEach(song => {
+  myCollection.forEach(song => {
   // ============================================== LIST
 
   const tracks = document.createElement("li");
@@ -2091,27 +2105,27 @@ const init = () => {
   }
 });
 
-const searchBar = document.querySelector("#input");
-searchBar.addEventListener("keyup", function(e){
-  const term = e.target.value.toLowerCase();
-  const songItem =  document.querySelector(".li"); 
+// const searchBar = document.querySelector("#input");
+// searchBar.addEventListener("keyup", function(e){
+//   const term = e.target.value.toLowerCase();
+//   const songItem =  document.querySelector(".li"); 
    
-  music.forEach(function(song){
-    const artist = song.artistName.textContent; 
-    const collection = song.collectionName.textContent;
+//   music.forEach(function(song){
+//     const artist = song.artistName.textContent; 
+//     const collection = song.collectionName.textContent;
 
    
-    if (
-     artist.indexOf(term) != -1 &&
-      collection.indexOf(term) != -1
-    ) {
-      songItem.style.display = "";
-    } else {
-      songItem.style.display = "none";
-    }
-  })
+//     if (
+//      artist.indexOf(term) != -1 &&
+//       collection.indexOf(term) != -1
+//     ) {
+//       songItem.style.display = "";
+//     } else {
+//       songItem.style.display = "none";
+//     }
+//   })
 
-})
+// })
 
 
 
